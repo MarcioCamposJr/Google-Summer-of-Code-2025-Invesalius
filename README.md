@@ -2,10 +2,10 @@
 # Google Summer of Code 2025 - Final Report
 - Name : Marcio Campos Junior
 - Organization : [InVesalius](https://invesalius.github.io/)
-- Project : [Simultaneous visualization and control of Two Robots for Dual Transcranial Magnetic Stimulation](https://summerofcode.withgoogle.com/organizations/invesalius/projects/details/vG6Rv7zY)
+- Project : [Simultaneous visualization and control of Two Robots for Dual Transcranial Magnetic Stimulation](https://summerofcode.withgoogle.com/programs/2025/projects/vG6Rv7zY)
 - Mentors : Renan Hiroshi Matsuda, Victor H. E. Malheiro, Lucas dos Santos Betioli, Thais Cunha Marchetti
 - Project Branch : [GSoC_2025_MarcioCamposJr]
-- Pull Request (example): [#945](https://github.com/invesalius/invesalius3/pull)(Merged) (Related issue- #923)
+- Pull Request (example): [#945](https://github.com/invesalius/invesalius3/pull)(Merged) (Related issue - #923)
 ## Introduction
 This project was developed as part of Google Summer of Code 2025 with the InVesalius organization. The goal was to enhance the 3D surface export functionality in the application by introducing a cancellable progress dialog, improving user feedback, and adding support for additional file formats. These changes aimed to provide users with better control, transparency, and reliability during long export operations.
 
