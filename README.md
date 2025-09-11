@@ -1,4 +1,5 @@
 ![Alt Text](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/cover.png)
+
 # Google Summer of Code 2025 - Final Report
 - Name : Marcio Campos Junior
 - Organization : [InVesalius](https://invesalius.github.io/)
@@ -6,10 +7,9 @@
 - Mentors : Renan Hiroshi Matsuda, Victor H. E. Malheiro, Lucas dos Santos Betioli, Thais Cunha Marchetti
 - Project Branch : [GSoC_2025_MarcioCamposJr]
 - Pull Request (example): [#945](https://github.com/invesalius/invesalius3/pull)(Merged) (Related issue - #923)
-## Introduction
-This project was developed as part of Google Summer of Code 2025 with the InVesalius organization. The goal was to enhance the 3D surface export functionality in the application by introducing a cancellable progress dialog, improving user feedback, and adding support for additional file formats. These changes aimed to provide users with better control, transparency, and reliability during long export operations.
 
-InVesalius supports exporting 3D surface data in formats such as .stl, .vtp, .ply, .obj, .x3d, .wrl, .rib, and .iv.
+## Introduction
+Development and integration of the functionality for simultaneous control of two robots, aimed at applying dual-site Transcranial Magnetic Stimulation (TMS) in InVesalius (currently, support is provided for only one TMS coil attached to one robot). This feature is based on the existing implementation for the use of two or more coils, adapting it for multiple robots. The inclusion of this feature not only improves the speed, accuracy, and safety of the stimulatory process, but also enables the scientific exploration of interactive brain networks, by allowing concurrent, targeted TMS pulses to multiple brain areas.
 
 ## Project Goal
 This project aimed to enhance the 3D surface export workflow in InVesalius, an open-source medical imaging platform, by improving usability and responsiveness. The main objective was to introduce a cancellable progress dialog that offered real-time feedback during export operations—particularly valuable for users working with large or complex datasets.The export pipeline was also strengthened through better error handling, cleanup mechanisms, and a more consistent user interface, resulting in a smoother and more reliable export experience.
@@ -34,14 +34,14 @@ The dialog also includes a Cancel button. If the user cancels, the operation sto
 
 
 
----  
+
 ### Feature 2 : Better User Feedback and Error Handling
 Success messages were added for completed exports and clear error messages for issues like:
 - Empty surface data.
 - Permission problems.
 - Unsupported file types.
 - If the GUI is not available (e.g., running in headless mode), the system falls back to simple console messages instead of crashing.
----
+
 ### Feature 3: Simulated Progress for VTK-Based Writers
 VTK’s built-in writers (e.g., vtkSTLWriter, vtkPLYWriter, vtkXMLPolyDataWriter) do not provide native support for progress updates. To work around this, I implemented a simulated progress mechanism that estimates export progress based on the number of points and a configurable update interval.
 
@@ -50,16 +50,11 @@ These updates don’t track the actual write process, but by estimating progress
 ![image](https://github.com/user-attachments/assets/64361cf4-8085-475b-9ae7-5856d32fe0ee)
 
 
----  
+
 ### Feature 4: Extended Format Support and Cleaner Workflow
 - Preserved existing polydata export functionality for STL, PLY, VTP, etc.
 - Extended progress feedback system to full 3D scene exports for formats like RIB, VRML, X3D, OBJ, and IV.
 - Ensured backward compatibility and integration with existing workflow.
- ---  
-
-
-
-
 
 ### Feature 5: Refactored Export Workflow
 Previously, the export logic was scattered and difficult to extend.
@@ -67,7 +62,6 @@ I refactored _export_surface() in surface.py to:
 - Group common tasks (e.g., polydata preparation, normal orientation).
 - Centralize progress updates and cancellation checks.
 - Make the workflow cleaner and easier to maintain for future extensions.
-
 
 
 ## Weekly Reports
@@ -79,7 +73,7 @@ I refactored _export_surface() in surface.py to:
 
 👉 [Week-11](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Week-11.md) -- [Week-12](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Week-12.md) -- [Week-13](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Week-13.md) -- [Week-14](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Week-14.md)
 
----
+
 ## Project Status
 
 The project is 100% complete and successfully merged into the main repository.  
@@ -91,7 +85,7 @@ All planned features have been implemented, tested, reviewed, and accepted.
   This contribution is now part of the official InVesalius codebase.
 
 
----
+
 ## Challenges Faced
 
 - **Maintaining Existing Functionality**  
