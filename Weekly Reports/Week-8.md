@@ -2,7 +2,7 @@
 
 In the eighth week, the efforts were directed toward simplifying navigation processes, improving coil visualization, and refining the behavior of the main coil in simultaneous navigation. The key activities included:
 
-- Process Simplification – task_navigator
+- Process Simplification in task_navigator.py file
     - Reduced redundant processes for button creation, such as target_button_mode.
     - Streamlined task handling for improved maintainability.
 

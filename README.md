@@ -47,37 +47,34 @@ There are two ways to change the coil name:
 
   - Coil selection panel: By right-clicking on the coil you can change its name.
 
-<img src="https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/object_calibration_dialog.png" width="800" height="400"/>
+<img src="https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/object_calibration_dialog.png" width="320" height="400"/>
+<img src="https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/change_coil_name.png" width="640" height="400"/>
 
+- #### Coil targets associated with the coil
 
-### Feature 2 : Better User Feedback and Error Handling
-Success messages were added for completed exports and clear error messages for issues like:
-- Empty surface data.
-- Permission problems.
-- Unsupported file types.
-- If the GUI is not available (e.g., running in headless mode), the system falls back to simple console messages instead of crashing.
+With a registered coil selection box in the navigation panel, you can define who will be creating the coil targets, and you can check the coil displayed along with its coil target in the markers panel. You can also change which coil is associated by right-clicking on the coil target of interest.
 
-### Feature 3: Simulated Progress for VTK-Based Writers
-VTK’s built-in writers (e.g., vtkSTLWriter, vtkPLYWriter, vtkXMLPolyDataWriter) do not provide native support for progress updates. To work around this, I implemented a simulated progress mechanism that estimates export progress based on the number of points and a configurable update interval.
+<img src="https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/change_coil_associated.png" width="636" height="400"/>
 
-These updates don’t track the actual write process, but by estimating progress based on the number of points, they help give users a sense that the export is moving forward. This makes the application feel responsive, even during longer operations.
+### Feature 2 : Connection with two robots
 
-![image](https://github.com/user-attachments/assets/64361cf4-8085-475b-9ae7-5856d32fe0ee)
+The robots are controlled through an external repository (tms-robot-control) and communicate with Invesalius through the local server. To control both robots, a message splitter was added to the server for both instances of robot control objects, using the robot ID. Additionally, to allow dual robot control, a second robot connection and registration setting was added to the Invesalius preferences window, and a second set of robot control buttons was added to the navigation panel with an additional button for resetting robot errors.
 
+<img src="https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/dual_robot.png" width="636" height="400"/>
 
+Each robot must be associated with a single coil, otherwise this is done in the preferences window on the TMS coil tab.
 
-### Feature 4: Extended Format Support and Cleaner Workflow
-- Preserved existing polydata export functionality for STL, PLY, VTP, etc.
-- Extended progress feedback system to full 3D scene exports for formats like RIB, VRML, X3D, OBJ, and IV.
-- Ensured backward compatibility and integration with existing workflow.
+<img src="https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/robot_coil_selection.png" width="300" height="400"/>
 
-### Feature 5: Refactored Export Workflow
-Previously, the export logic was scattered and difficult to extend.
-I refactored _export_surface() in surface.py to:
-- Group common tasks (e.g., polydata preparation, normal orientation).
-- Centralize progress updates and cancellation checks.
-- Make the workflow cleaner and easier to maintain for future extensions.
+### Feature 3: Double simultaneous navigation
+Simultaneous navigation can be activated from a button on the navigation panel with the multiple-target icon. When activated, it adds a second screen that allows for two independent scenes, and it becomes possible to set more than one target, respecting one per coil. Navigation windows are associated with a single coil, and you can verify which one it is by the title.
 
+The image plan windows are disabled and the coil display indicators by the tracking device have been changed to display small spheres that represent each coil, changing their colors to the display status.
+
+<img src="https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/simultaneous_navigation.png" width="636" height="400"/>
+
+### Feature 4: Robot collision algorithm
+An efficient solution proposed to avoid coil collisions considered the dynamic alteration of the robot's motion coefficient based on the distances between the coils. To achieve this, the coils were considered a sphere, and beyond a certain distance, the coils decrease their speeds exponentially. The coefficients associated with the mathematical model took into account the sphere's radius, which is related to the coil's size, and the exponential decay coefficient, which was chosen empirically. Although the algorithm is functional, improvements are still needed to avoid collisions between the robots and to ensure proper coil geometry.
 
 ## Weekly Reports
 👉 [Community Bonding Period](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Community%20Bonding%20Period.md) 
@@ -89,16 +86,19 @@ I refactored _export_surface() in surface.py to:
 👉 [Week-11](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Week-11.md) -- [Week-12](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Week-12.md) -- [Week-13](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Week-13.md) -- [Week-14](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/Weekly%20Reports/Week-14.md)
 
 
+## Next steps
+
+- #### Simultaneous navigation with 4 coils
+    To increase the number of reels browsed simultaneously, it would be possible to divide them into up to 4 navigation windows and bring a layout control for viewing, such as setting the reels of interest and switching between possible viewing configurations.
+- #### Drag and drop navigation window system
+    To increase the size of the viewing window and be able to see more than one window simultaneously, it would be interesting to create navigation windows that could be dragged to other monitors.
+- #### Improvement in collision algorithm
+    A more robust collision algorithm model can be implemented considering repulsion in strategic regions, minimizing collision between the robotic arms and the coils and maximizing the positioning possibilities of the two coils.
 ## Project Status
 
-The project is 100% complete and successfully merged into the main repository.  
-All planned features have been implemented, tested, reviewed, and accepted.
+The project is functional, but improvements to the collision algorithm would allow for greater freedom in coil positioning. The pull request is still under review, but fixes have already been proposed and implemented, constituting a step toward merging with the main branch.
 
 - **Pull Request (Merged):** [#994 – Added progress bar for 3D surface exports](https://github.com/invesalius/invesalius3/pull)  
-- **Related Issue:** [#991 – Add progress bar to export 3D surface](https://github.com/invesalius/invesalius3/issues)
-
-  This contribution is now part of the official InVesalius codebase.
-
 
 
 ## Challenges Faced
