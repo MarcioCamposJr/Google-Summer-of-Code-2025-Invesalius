@@ -1,12 +1,12 @@
 ![Alt Text](https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/cover.png)
 
 # Google Summer of Code 2025 - Final Report
-- Name : Marcio Campos Junior
+- Name : Marcio Adriano Campos Junior
 - Organization : [InVesalius](https://invesalius.github.io/)
 - Project : [Simultaneous visualization and control of Two Robots for Dual Transcranial Magnetic Stimulation](https://summerofcode.withgoogle.com/programs/2025/projects/vG6Rv7zY)
 - Mentors : Renan Hiroshi Matsuda, Victor H. E. Malheiro, Lucas dos Santos Betioli, Thais Cunha Marchetti
-- Project Branch : [GSoC_2025_MarcioCamposJr]
-- Pull Request (example): [#945](https://github.com/invesalius/invesalius3/pull)(Merged) (Related issue - #923)
+- **(example)** Project Branch : [GSoC_2025_MarcioCamposJr]
+- **(example)** Pull Request: [#945](https://github.com/invesalius/invesalius3/pull)(Merged) (Related issue - #923)
 
 ## Introduction
 This project focuses on implementing simultaneous navigation capabilities for two Transcranial Magnetic Stimulation (TMS) coils within the InVesalius software. The core of the work was to adapt the system architecture to manage, visualize, and record two targets and two coils concurrently, overcoming the previous limitation of only one target at a time.
