@@ -98,22 +98,7 @@ An efficient solution proposed to avoid coil collisions considered the dynamic a
 
 The project is functional, but improvements to the collision algorithm would allow for greater freedom in coil positioning. The pull request is still under review, but fixes have already been proposed and implemented, constituting a step toward merging with the main branch.
 
-- **Pull Request (Merged):** [#994 – Added progress bar for 3D surface exports](https://github.com/invesalius/invesalius3/pull)  
-
-
-## Challenges Faced
-
-- **Maintaining Existing Functionality**  
-  While adding progress dialogs, I had to ensure that no existing export formats broke or behaved unexpectedly.
-
-- **Simulating Progress for VTK Writers**  
-  VTK does not support native progress tracking, so I implemented a simulation using loop-based updates over surface points.
-
-- **Handling Export Cancellation**  
-  Initially, files were still being saved even after cancellation. I added checks and cleanup logic to prevent incomplete exports.
-
-- **Auto-Closing Progress Dialog**  
-  Ensured the progress dialog closed automatically after success or cancellation, improving overall user experience.
+- **Pull Request:** [#994 – Added progress bar for 3D surface exports](https://github.com/invesalius/invesalius3/pull)  
 
 ## Acknowledgements
 
