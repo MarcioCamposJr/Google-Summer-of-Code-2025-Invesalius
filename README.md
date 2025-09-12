@@ -9,30 +9,45 @@
 - Pull Request (example): [#945](https://github.com/invesalius/invesalius3/pull)(Merged) (Related issue - #923)
 
 ## Introduction
-Development and integration of the functionality for simultaneous control of two robots, aimed at applying dual-site Transcranial Magnetic Stimulation (TMS) in InVesalius (currently, support is provided for only one TMS coil attached to one robot). This feature is based on the existing implementation for the use of two or more coils, adapting it for multiple robots. The inclusion of this feature not only improves the speed, accuracy, and safety of the stimulatory process, but also enables the scientific exploration of interactive brain networks, by allowing concurrent, targeted TMS pulses to multiple brain areas.
+This project focuses on implementing simultaneous navigation capabilities for two Transcranial Magnetic Stimulation (TMS) coils within the InVesalius software. The core of the work was to adapt the system architecture to manage, visualize, and record two targets and two coils concurrently, overcoming the previous limitation of only one target at a time.
+
+To enable the physical and precise positioning of these two coils, the project also included the development of a control structure for multiple robots. The implementation ranged from creating a dedicated navigation interface to managing multiple targets in the 3D scene. For robotic operation, a critical component was the development of safety algorithms to ensure that the coils would not collide.
 
 ## Project Goal
-This project aimed to enhance the 3D surface export workflow in InVesalius, an open-source medical imaging platform, by improving usability and responsiveness. The main objective was to introduce a cancellable progress dialog that offered real-time feedback during export operations—particularly valuable for users working with large or complex datasets.The export pipeline was also strengthened through better error handling, cleanup mechanisms, and a more consistent user interface, resulting in a smoother and more reliable export experience.
+Integrate a functional system for dual-site Transcranial Magnetic Stimulation (TMS) procedures into the InVesalius software, enabling both manual and robotic navigation.
+
+To achieve this primary objective, the following specific deliverables were defined:
+
+- Enable simultaneous navigation and precise positioning of two TMS coils on distinct neural targets.
+
+- Ensure independent control of each robot-coil assembly, when in use, through the software interface.
+
+- Implement robust safety mechanisms to prevent collisions between coils during robotic operation.
 
 ## Motivation
-Before this work, InVesalius lacked user feedback and control during the 3D surface export process. Large exports appeared unresponsive, and users had no way to monitor progress or cancel the operation. This project was motivated by the need to improve usability, transparency, and reliability during surface exports.
+Traditional Transcranial Magnetic Stimulation (TMS) allows the study or modulation of a single brain region at a time. However, complex brain functions and neurological conditions emerge from the interaction between multiple areas that form a network. Limiting one stimulation point prevents direct investigation of these dynamics.
+
+The need for a dual-site TMS tool arises to overcome this barrier, allowing:
+
+- Mapping network dynamics: Investigating how activity in one brain region directly influences another, revealing the causality and strength of neural connections in real time.
+
+- Developing new therapies: Modulating dysfunctional neural networks more fully.
+
+- Understanding complex functions: Studying how different brain centers cooperate to perform tasks.
 
 ## Features Implemented
-### Feature 1:  Progress Dialog with Cancel Option
-One major improvement was introducing a cancellable progress dialog for both surface exports and full 3D scene exports.
-Previously, users had no feedback during large exports, which could take several seconds or even minutes. Now, a wx.ProgressDialog shows:
-- Preparing export...
-- Converting coordinates...
-- Exporting file: XX% complete
-- Export complete.
+### Feature 1:  Improvements in multiple coil mode
+To increase flexibility and improve clarity in coil identification, we've introduced the option to name coils, making it possible to associate coil targets with a single coil.
 
-The dialog also includes a Cancel button. If the user cancels, the operation stops gracefully, and temporary files are cleaned up to avoid corrupted outputs.
+- #### Coil name 
 
-<img src="https://github.com/user-attachments/assets/1d0deedb-58dc-4ead-ba5f-9eab0fae05ef" width="800" height="400"/>
+There are two ways to change the coil name:
 
+  - Coil registration window: In the coil selection box for registration, you can change the name. The displayed sequence of coils follows the same sequence as the markers added when connecting to the tracker.
 
+  - Coil selection panel: By right-clicking on the coil you can change its name.
 
-
+<img src="https://github.com/MarcioCamposJr/Google-Summer-of-Code-2025-Final-Report/blob/main/images/object_calibration_dialog.png" width="800" height="400"/>
 
 
 ### Feature 2 : Better User Feedback and Error Handling
