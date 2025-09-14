@@ -98,7 +98,8 @@ An efficient solution proposed to avoid coil collisions considered the dynamic a
 
 The project is functional, but improvements to the collision algorithm would allow for greater freedom in coil positioning. The pull request is still under review, but fixes have already been proposed and implemented, constituting a step toward merging with the main branch.
 
-- **Pull Request:** [#994 – Added progress bar for 3D surface exports](https://github.com/invesalius/invesalius3/pull)  
+- **Pull Request:** [#1024 – Simultaneous navigation with double coils and robots](https://github.com/invesalius/invesalius3/pull/1024)  
+- **Pull Request (tms-robot-control):** [#25 – Enabling dual robot communication](https://github.com/biomaglab/tms-robot-control/pull/25)  
 
 ## Acknowledgements
 
